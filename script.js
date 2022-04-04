@@ -2,7 +2,7 @@ $(document).ready(function () {
 
 	//Set global variables
 
-	var pomodoro = 25, currentTime = Date.parse(new Date()), deadline, timeInterval, breakTime = 5, i;
+	var pomodoro = 45, currentTime = Date.parse(new Date()), deadline, timeInterval, breakTime = 5, i;
 
 	//Display the clock
 
