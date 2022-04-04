@@ -2,7 +2,7 @@ $(document).ready(function () {
 
 	//Set global variables
 
-	var pomodoro = 45, currentTime = Date.parse(new Date()), deadline, timeInterval, breakTime = 5, i;
+	var pomodoro = 40, currentTime = Date.parse(new Date()), deadline, timeInterval, breakTime = 5, i;
 
 	//Display the clock
 
@@ -19,7 +19,7 @@ $(document).ready(function () {
 
 	$("#pomodoro-plus-btn").click(function () {
 		pomodoro++;
-		if (pomodoro > 60 ) {
+		if (pomodoro > 60) {
 			pomodoro = 60;
 		}
 
@@ -55,11 +55,11 @@ $(document).ready(function () {
 	});
 
 	//Calculate the time remaining
-		
-	function getTimeLeft (end) {
+
+	function getTimeLeft(end) {
 		var total = Date.parse(end) - Date.parse(new Date());
-		var seconds = Math.floor((total/1000) % 60);
-		var minutes = Math.floor((total/1000/60) % 60);
+		var seconds = Math.floor((total / 1000) % 60);
+		var minutes = Math.floor((total / 1000 / 60) % 60);
 
 		return {
 			"total": total,
@@ -70,7 +70,7 @@ $(document).ready(function () {
 
 	//Initialize the timer
 
-	function startClock () {
+	function startClock() {
 		timeInterval = setInterval(function () {
 			var t = getTimeLeft(deadline);
 			minutesSpan.innerHTML = ("0" + t.minutes).slice(-2);
@@ -92,7 +92,7 @@ $(document).ready(function () {
 
 	//Functions for pomodoro, break and reset
 
-	function startPomodoro () {
+	function startPomodoro() {
 		minutesSpan.innerHTML = ("0" + pomodoro).slice(-2);
 		secondsSpan.innerHTML = "00";
 		$(".start-pomodoro, .break, .session-length").addClass('hidden');
@@ -104,7 +104,7 @@ $(document).ready(function () {
 		i = 0;
 	}
 
-	function startBreak () {
+	function startBreak() {
 		minutesSpan.innerHTML = ("0" + breakTime).slice(-2);
 		secondsSpan.innerHTML = "00";
 		$(".start-pomodoro, .break, .session-length").addClass('hidden');
@@ -116,7 +116,7 @@ $(document).ready(function () {
 		i = 1;
 	}
 
-	function resetClock () {
+	function resetClock() {
 		$(".btn-count").prop("disabled", false);
 		$("body").css('background-color', '#F1C40F');
 		$(".start-pomodoro, .break, .session-length").removeClass('hidden');
@@ -126,12 +126,12 @@ $(document).ready(function () {
 		clearInterval(timeInterval);
 		minutesSpan.innerHTML = ("0" + pomodoro).slice(-2);
 		secondsSpan.innerHTML = "00";
-		
+
 	}
 
 	//Start Pomodoro
 
-	$(".start-pomodoro").click(function() {
+	$(".start-pomodoro").click(function () {
 		startPomodoro();
 	});
 
@@ -146,5 +146,5 @@ $(document).ready(function () {
 	$(".reset").click(function () {
 		resetClock();
 	});
-		
+
 });
